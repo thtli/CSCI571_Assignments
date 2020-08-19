@@ -1,0 +1,17 @@
+.black-pagination /deep/ .ngx-pagination .current {
+  background: black;
+}
+
+.material-icons {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.material-icons.golden { 
+  color: darkgoldenrod; 
+}
+.selected {
+  background-color: gray !important;
+}

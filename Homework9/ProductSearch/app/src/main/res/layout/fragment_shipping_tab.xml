@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_shipping"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ShippingTabFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:id="@+id/shipping_tab_results"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:orientation="vertical">
+            <TableLayout
+                android:id="@+id/shipping_soldBy_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="8dp">
+
+                    <ImageView
+                        android:id="@+id/soldby_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/truck"
+                        android:layout_marginEnd="8dp"/>
+
+                    <TextView
+                        android:id="@+id/soldby_label"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/sold_by"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </TableRow>
+                <TableRow
+                    android:id="@+id/shipping_storeName_row"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/shipping_storeName_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:layout_column="1"
+                        android:text="@string/store_name"
+                        android:layout_marginVertical="8dp"/>
+                    <TextView
+                        android:id="@+id/shipping_storeName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/colorAccent"
+                        android:layout_column="2"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:text="@string/store_name"
+                        android:layout_gravity="center_vertical"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/shipping_feedbackScore_row"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/shipping_feedbackScore_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:layout_column="1"
+                        android:text="@string/feedback_score"
+                        android:layout_marginVertical="8dp"/>
+                    <TextView
+                        android:id="@+id/shipping_feedbackScore"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:text="Score"
+                        android:layout_gravity="center_vertical"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/shipping_popularity_row"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/shipping_popularity_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:layout_column="1"
+                        android:text="@string/popularity"
+                        android:layout_marginVertical="8dp"/>
+                    <com.wssholmes.stark.circular_score.CircularScoreView
+                        android:id="@+id/shipping_popularity"
+                        android:layout_height="32dp"
+                        android:layout_width="32dp"
+                        android:layout_gravity="start|center_vertical"
+                        app:score="50"
+                        app:setBackgroundColor="@android:color/white"
+                        app:setTextColor="@android:color/black"
+                        app:setPrimaryColor="@color/colorExtra"
+                        app:setSecondaryColor="@color/colorAccent"
+
+                        />
+                </TableRow>
+                <TableRow
+                    android:id="@+id/shipping_feedbackStar_row"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/shipping_feedbackStar_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:layout_column="1"
+                        android:text="@string/feedback_star"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginVertical="8dp"/>
+
+                    <ImageView
+                        android:id="@+id/shipping_feedbackStar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="start|center_vertical"
+                        android:src="@drawable/star_circle_outline" />
+                </TableRow>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:background="?android:attr/listDivider"
+                        android:layout_marginTop="8dp"/>
+
+            </TableLayout>
+
+            <TableLayout
+                android:id="@+id/shipping_shipping_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="16dp">
+
+                    <ImageView
+                        android:id="@+id/shippingInfo_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ferry"
+                        android:layout_marginEnd="8dp"/>
+
+                    <TextView
+                        android:id="@+id/shippingInfo_label"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/shipping_info"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </TableRow>
+                <TableRow
+                    android:id="@+id/shipping_shipCost_row"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp">
+                    <TextView
+                        android:id="@+id/shipping_shipCost_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:layout_column="1"
+                        android:text="@string/shipping_cost" />
+                    <TextView
+                        android:id="@+id/shipping_shipCost"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_weight="1"
+                        android:text="@string/shipping_cost" />
+                </TableRow>
+                <TableRow
+                    android:id="@+id/shipping_globalShip_row"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp">
+                    <TextView
+                        android:id="@+id/shipping_globalShip_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:layout_column="1"
+                        android:text="@string/global_shipping" />
+                    <TextView
+                        android:id="@+id/shipping_globalShip"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:text="Yes/No"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/shipping_handling_row"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp">
+                    <TextView
+                        android:id="@+id/shipping_handling_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:layout_column="1"
+                        android:text="@string/handling_time" />
+                    <TextView
+                        android:id="@+id/shipping_handling"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_weight="1"
+                        android:text="@string/handling_time"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/shipping_condition_row"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp">
+                    <TextView
+                        android:id="@+id/shipping_condition_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:layout_column="1"
+                        android:text="@string/condition" />
+                    <TextView
+                        android:id="@+id/shipping_condition"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_weight="1"
+                        android:text="@string/condition"/>
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="?android:attr/listDivider" />
+            </TableLayout>
+
+            <TableLayout
+                android:id="@+id/shipping_return_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="16dp">
+
+                    <ImageView
+                        android:id="@+id/shipping_return_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/dump_truck"
+                        android:layout_marginEnd="8dp"/>
+
+                    <TextView
+                        android:id="@+id/shipping_return_label"
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/return_policy"
+                        android:textColor="@android:color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </TableRow>
+                <TableRow
+                    android:id="@+id/shipping_policy_row"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp">
+                    <TextView
+                        android:id="@+id/shipping_policy_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:layout_column="1"
+                        android:text="@string/policy" />
+                    <TextView
+                        android:id="@+id/shipping_policy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_weight="1"
+                        android:text="@string/shipping_cost" />
+                </TableRow>
+                <TableRow
+                    android:id="@+id/shipping_returnsWithin_row"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp">
+                    <TextView
+                        android:id="@+id/shipping_returnsWithin_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:layout_column="1"
+                        android:text="@string/returns_within" />
+                    <TextView
+                        android:id="@+id/shipping_returnsWithin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_weight="1"
+                        android:text="@string/returns_within"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/shipping_refundMode_row"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp">
+                    <TextView
+                        android:id="@+id/shipping_refundMode_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:layout_column="1"
+                        android:text="@string/refund_mode" />
+                    <TextView
+                        android:id="@+id/shipping_refundMode"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_column="2"
+                        android:layout_weight="1"
+                        android:text="@string/refund_mode"/>
+                </TableRow>
+                <TableRow
+                    android:id="@+id/shipping_shippedBy_row"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp">
+                    <TextView
+                        android:id="@+id/shipping_shippedBy_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@android:color/black"
+                        android:layout_column="1"
+                        android:text="@string/shipped_by" />
+                    <TextView
+                        android:id="@+id/shipping_shippedBy"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_column="2"
+                        android:text="@string/shipped_by"/>
+                </TableRow>
+            </TableLayout>
+
+            <TextView
+                android:id="@+id/fragment_shipping_debug"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Shipping Tab"
+                android:visibility="gone"/>
+        </LinearLayout>
+
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/shipping_tab_noResults"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/no_results"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"/>
+
+
+</android.support.constraint.ConstraintLayout>

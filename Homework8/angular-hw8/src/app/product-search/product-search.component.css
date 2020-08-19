@@ -1,0 +1,31 @@
+button {
+  margin-right: 30px;
+}
+
+.nav-pills > li > a.active {
+  background-color: black;
+}
+
+.nav-link {
+  color: black;
+}
+
+.ng-touched.ng-invalid:not(form) {
+border: 1px solid red;
+}
+
+.invalid-alert {
+color: red;
+font-size: 12px;
+}
+
+.red {
+  color: red;
+}
+
+.material-icons {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}

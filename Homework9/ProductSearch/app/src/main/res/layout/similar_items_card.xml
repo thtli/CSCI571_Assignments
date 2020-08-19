@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+            <ImageView
+                android:id="@+id/simItems_imageView"
+                android:layout_width="160dp"
+                android:layout_height="160dp" />
+            <TextView
+                android:id="@+id/simItems_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@id/simItems_imageView"
+                android:layout_marginBottom="8dp"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:minLines="3"
+                android:text="Example Title"
+                android:textAlignment="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Menu" />
+            <TextView
+                android:id="@+id/simItems_shipping"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/simItems_title"
+                android:layout_toEndOf="@id/simItems_imageView"
+                android:layout_margin="8dp"
+                android:text="@string/shipping_info"/>
+            <TextView
+                android:id="@+id/simItems_daysLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/simItems_title"
+                android:layout_toEndOf="@id/simItems_shipping"
+                android:layout_margin="8dp"
+                android:text="Days Left"/>
+            <TextView
+                android:id="@+id/simItems_price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@id/simItems_daysLeft"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@id/simItems_daysLeft"
+                android:layout_margin="8dp"
+                android:text="price"
+                android:maxLines="1"
+                android:textAlignment="center"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

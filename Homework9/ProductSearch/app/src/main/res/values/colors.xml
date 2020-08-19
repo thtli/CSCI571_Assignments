@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6002ee</color>
+    <color name="colorPrimaryDark">#3000aa</color>
+    <color name="colorAccent">#9c47ff</color>
+    <color name="colorExtra">#ee6002</color>
+
+    <color name="purple">#663399</color>
+    <color name="turquoise">#40E0D0</color>
+</resources>

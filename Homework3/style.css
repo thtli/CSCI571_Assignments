@@ -1,0 +1,217 @@
+html,body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden; 
+}
+
+
+/* parallax effect */
+.parallax {
+  perspective: 1px;    
+  height: 100vh;       
+  overflow-x: hidden; 
+  overflow-y: auto;   
+}
+
+.parallax-layer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.parallax-base {
+  transform: translateZ(0);
+  z-index: 2;
+}
+
+.parallax-back {
+  transform: translateZ(-1px) scale(2);
+  z-index: 1;
+}
+
+.parallax-group {
+  position: relative;
+  transform-style: preserve-3d; 
+}
+
+
+/* general style */
+@font-face {
+  font-family: "SansSerifFLF";
+  src: url("sansserifflf-demibold.otf");
+}
+
+#wrapper {
+  width: 750px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+span.name {
+  font-weight: bolder;
+  font-size: 20px;
+  letter-spacing: 5px;
+  vertical-align: middle;
+  margin-right: 15px;
+}
+
+span.menu {
+  font-size: 8px;
+  letter-spacing: 2px;
+  vertical-align: middle;
+  margin-left: 7px;
+  margin-right: 7px;
+}
+
+.header {
+  color: white;
+  width: 700px;
+  margin-top: 15px;
+}
+
+.centered {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.intro {
+  width: 400px;
+  color: white;
+}
+
+.info {
+  text-align: center;
+  width: 425px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+h1 {
+  font-size: 65px;
+  margin-top: 30%;
+}
+
+.text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 13px;
+  line-height: 180%;
+  letter-spacing: 1px;
+}
+
+button {
+  background-color: white;
+  border: none;
+  padding: 12px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 9px;
+  letter-spacing: 1px;
+  margin: 4px 2px;
+}
+
+.images {
+  margin-top: 50px;
+  margin-bottom: 20px;
+}
+.thumbnail {
+  object-fit: cover;
+  object-position: 50% 0;
+
+  width: 300px;
+  height: 300px;
+  margin: 5px;
+}
+
+.leftalign {
+  font-size: 9px;
+  text-align: left;
+  width: 340px;
+  letter-spacing: 0px;
+  color: gray;
+}
+
+/* position/size of each parallax group */
+#top {
+  height: 625px;
+  z-index: 1; 
+  font-family: SansSerifFLF;
+  font-size: 30px;
+}
+
+#top .parallax-back {
+  top: -22%;
+  position: relative;  
+  text-align: center;
+}
+
+.pic1 {
+  object-fit: cover;
+  object-position: 50% 0;
+
+  width: 750px;
+  height: 690px;
+}
+
+#middle {
+  height: 850px;
+  z-index: 2; 
+}
+#middle .parallax-base {
+  width: 750px;
+  background: white;
+  text-align: center;
+}
+
+
+#bottom {
+  font-size: 13px;
+  letter-spacing: 1px;
+  line-height: 180%;
+
+  height: 600px;
+  z-index: 1; 
+}
+
+#bottom .parallax-back {
+  top: 10%;
+  position: relative;  
+  text-align: center;
+}
+
+.pic6 {
+  object-fit: cover;
+  object-position: 50% 0;
+
+  width: 750px;
+  height: 675px;
+}
+
+#end {
+  height: 105px;
+  z-index: 2; 
+}
+
+#end .parallax-base {
+  background: white;
+}
+
+
+/*
+Tina Li
+CSCI 571 Spr 19
+
+parallax effect referenced from:
+https://keithclark.co.uk/articles/pure-css-parallax-websites/
+*/

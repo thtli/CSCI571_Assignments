@@ -1,0 +1,68 @@
+<div *ngIf="defaultSort && defaultSort.length != 0">
+  <br>
+  <div class="row">
+    <div class="col-md-2">
+    <select class="custom-select" [(ngModel)]="sortOption" (click)="sortBy()">
+      <option>Default</option>
+      <option>Product Name</option>
+      <option>Days Left</option>
+      <option>Price</option>
+      <option>Shipping Cost</option>
+    </select>
+    </div>
+    <div class="col-md-2">
+      <select class="custom-select" [(ngModel)]="ascendOrDescend" [disabled]="disableAD" (click)="sortBy()">
+      <option>Ascending</option>
+      <option>Descending</option>
+    </select>
+    </div>
+  </div>
+  <br>
+  <div *ngFor="let item of similarItems.slice(0,5)">
+    <div class="card text-white bg-dark mb-3">
+      <div class="row">
+        <div class="col-md-2">
+          <a href={{item.imageURL}} target="_blank"><img src={{item.imageURL}} style="height: 150px; width: 150px; margin: 10px;"></a>
+        </div>
+        <div class="col-md-10">
+          <div class="card-body">
+            <a href={{item.viewItemURL}} target="_blank">{{item.title}}</a><br>
+            <span style="color: lightgreen">Price: ${{item.buyItNowPrice.__value__}}</span><br>
+            <span style="color: gold">Shipping Cost: ${{item.shippingCost.__value__}}</span><br>
+            <span>Days Left: {{item.timeLeft.substring(1,item.timeLeft.indexOf('D'))}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-container *ngIf="showMore">
+  <div *ngFor="let item of similarItems.slice(5, similarItems.length)">
+    <div class="card text-white bg-dark mb-3">
+      <div class="row">
+        <div class="col-md-2">
+          <img src={{item.imageURL}} style="height: 150px; width: 150px; margin: 10px;">
+        </div>
+        <div class="col-md-10">
+          <div class="card-body">
+            <a href={{item.viewItemURL}} target="_blank">{{item.title}}</a><br>
+            <span style="color: lightgreen">Price: ${{item.buyItNowPrice.__value__}}</span><br>
+            <span style="color: gold">Shipping Cost: ${{item.shippingCost.__value__}}</span><br>
+            <span>Days Left: {{item.timeLeft.substring(1,item.timeLeft.indexOf('D'))}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </ng-container>
+
+  <div *ngIf="similarItems.length" class="row justify-content-center">
+  <button type="button" class="btn btn-dark" (click)="showMoreLess()">
+    <span *ngIf="!showMore">Show More</span>
+    <span *ngIf="showMore">Show Less</span>
+  </button>
+  </div>
+</div>
+
+<div *ngIf="!defaultSort || defaultSort.length == 0">
+  <app-no-results></app-no-results>
+</div>

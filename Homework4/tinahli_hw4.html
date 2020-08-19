@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Homework 4</title>
+  <style>
+    .submission {
+      text-align: center;
+      margin-top: 100px;
+    }
+
+    input {
+      margin-bottom: 20px;
+    }
+
+  </style>
+
+  <script type="text/javascript">
+    // viewJSON - function to display JSON (happens on click)
+    function viewJSON(what) {
+      var URL = what.URL.value;
+
+      // check if text box is empty
+      if (URL == "") {
+        window.alert("ERROR: Text box cannot be empty. Please enter file name.");
+        return;
+      }
+
+      // function for opening & parsing JSON file 
+      function loadJSON(url) {        
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.open("GET", url, true); 
+        
+        try {
+          xmlhttp.send();
+          if (xmlhttp.status == "404") {
+            throw "FileDoesNotExist";
+          }
+        }
+        catch (exception) {
+          // local file: Network error during send(); 404 status = file does not exist
+          window.alert("ERROR: File Does Not Exist");
+
+        }
+
+        // parse JSON into DOM tree 
+        jsonObj = JSON.parse(xmlhttp.responseText);
+        return jsonObj;
+      }
+
+      // open & parse JSON file
+      var jsonObj = loadJSON(URL);
+
+      // create HTML to display JSON
+      try {
+        jsonObj.onload = generateHTML(jsonObj);
+        hWin = window.open("", "Assignment4", "height=800,width=1000");
+        hWin.document.write(html_text);   
+        hWin.document.close(); 
+      }
+      catch (exception) {
+        window.alert("ERROR: JSON file is empty.");
+      } 
+
+      // function for creating display - write HTML table row by row
+      function generateHTML(jsonObj)   {
+        root = jsonObj.DocumentElement; 
+        // begin HTML with starting tags and title
+        html_text = "<html><head><title>Highest-grossing films</title></head>";
+        html_text += "<body><table border='2' style='width:100%'>"; 
+
+        films = jsonObj.Mainline.Table.Row; // array of all film objects
+        
+        if (films == undefined) {
+          throw "EmptyFile";
+        }
+
+        html_text += "<tbody>"; 
+        html_text += "<tr>"; 
+        x=100;  y=150;
+
+        // get array of headers and output them
+        var header_data = jsonObj.Mainline.Table.Header.Data;
+        for (i = 0; i < header_data.length; i++) { 
+          var width;
+          header = header_data[i];
+          
+          // set width of columns based on header
+          if (i == 0) {
+            width = 5;
+          }
+          else if (i == 1) {
+            width = 5;
+          }
+          else if (i == 2) {
+            width = 25;
+          }
+          else if (i == 3) {
+            width = 5;
+          }
+          else if (i == 4) {
+            width = 55;
+          }
+          else {
+            width = 5;
+          }
+          
+          html_text+="<th style='width:" + width + "%'>"+header+"</th>";    
+        }
+
+        html_text += "</tr>"; 
+
+      
+        // output out the values
+        for (i = 0; i < films.length; i++) //do for all films (one per row)
+        {                 
+          filmNodeList = films[i]; // object with properties of film
+          html_text += "<tr>";      // add a new row in table
+          var film_keys = Object.keys(filmNodeList); // array of object keys
+          
+          for (j = 0; j < film_keys.length; j++) {
+            prop = film_keys[j];
+            
+            //empty node
+            if (filmNodeList[prop] == "") {
+              html_text += "<td></td>";
+            }
+            
+            // handle info column separately
+            else if (film_keys[j]=="Hubs") {
+              if(filmNodeList[prop].Hub.length == 0) {
+                html_text += "<td></td>";
+              }
+              else { 
+                // first item is bolded
+                html_text += "<td><ul><li><strong>" + filmNodeList[prop].Hub[0] + "</strong></li>";
+                // if hub has 2 or more items
+                for (k = 1; k < filmNodeList[prop].Hub.length; k++) {
+                  html_text += "<li>" + filmNodeList[prop].Hub[k] + "</li>";
+                }
+
+                html_text += "</ul></td>";
+
+                }   
+            // handle wiki page (link) separately       
+            } else if (film_keys[j]=="HomePage") {  
+              
+              html_text += "<td><a href='" + filmNodeList[prop] + "'>" + filmNodeList[prop] + "</a></td>";    
+            
+            // handle images separately
+            } else if (film_keys[j]=="Logo") {
+              
+              html_text += "<td><img src='"+ filmNodeList[prop] +"' width='"+x+"' height='"+y+"'></td>"; 
+            
+            } else {
+              html_text += "<td>"+ filmNodeList[prop] +"</td>";
+            } 
+          }
+
+          // end row
+          html_text+="</tr>";            
+        }                             
+        
+          html_text+="</tbody>"; 
+          html_text+="</table>";           
+          html_text+="</body></html>";
+      }  
+
+    }
+  </script>
+</head>
+
+<body>
+  <div class="submission">
+    <h3>Enter URL for Highest-grossing films List JSON File</h3>
+    <form name="myform" method="POST" id="location">
+      <input type="text" name="URL" maxlength="255" size="25"/>
+      <br/>
+      <input type="button" name="submit" value="Submit Query" onClick="viewJSON(this.form)" />
+    </form>
+  </div>
+
+</body>
+</html>
+
+<!--
+  CSCI 571 Spring 2019
+  Tina Li
+
+  Exception Handling: https://stackoverflow.com/questions/20231075/how-to-catch-networkerror-in-javascript
+  -->

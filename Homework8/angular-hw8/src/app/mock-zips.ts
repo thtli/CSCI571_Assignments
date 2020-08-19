@@ -1,0 +1,1 @@
+export const ZIPCODES: string[] = ['89516', '21545', '15875'];

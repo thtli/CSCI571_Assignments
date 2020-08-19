@@ -1,0 +1,11 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.productsearch.ProductDetailsActivity">
+    <item
+        android:id="@+id/action_facebook"
+        android:orderInCategory="100"
+        android:title="facebook"
+        android:icon="@drawable/facebook"
+        app:showAsAction="always" />
+</menu>

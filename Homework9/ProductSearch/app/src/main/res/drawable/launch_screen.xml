@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The android:opacity=”opaque” line —  prevent flash of black as theme transitions. -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:opacity="opaque">
+
+    <!-- The background color-->
+    <item android:drawable="@color/colorPrimary"/>
+
+    <!-- Shopping Icon -->
+    <item android:drawable="@drawable/shopping_icon"
+        android:gravity="center"
+        android:width="96dp"
+        android:height="96dp">
+    </item>
+
+</layer-list>

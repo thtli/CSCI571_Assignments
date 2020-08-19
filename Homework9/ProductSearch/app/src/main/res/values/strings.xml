@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name">Product Search</string>
+    <string name="action_settings">Settings</string>
+    <string name="section_format">Hello World from section: %1$d</string>
+
+    <!-- no results -->
+    <string name="no_results">No results</string>
+    <string name="no_wishes">No Wishes</string>
+
+    <!-- wishlist fragment -->
+    <string name="wl_0_items">Wishlist total(0 items):</string>
+    <string name="wl_0_dollars">$0.00</string>
+
+    <!-- search fragment -->
+    <string name="keyword">Keyword</string>
+    <string name="input_error_message">Please enter mandatory field</string>
+    <string name="keyword_hint">Enter Keyword</string>
+    <string name="category">Category</string>
+    <string name="condition">Condition</string>
+    <string name="cond_new">New</string>
+    <string name="cond_used">Used</string>
+    <string name="cond_unspecified">Unspecified</string>
+    <string name="local_pickup">Local Pickup</string>
+    <string name="free_shipping">Free Shipping</string>
+    <string name="shipping_options">Shipping Options</string>
+    <string name="enable_nearby_search">Enable Nearby Search</string>
+    <string name="miles_hint">Miles from</string>
+    <string name="from">From</string>
+    <string name="current_location">Current Location</string>
+    <string name="zipcode_hint">zipcode</string>
+    <string name="search">Search</string>
+    <string name="clear">Clear</string>
+    <string-array name="category_array">
+        <item>All</item>
+        <item>Art</item>
+        <item>Baby</item>
+        <item>Books</item>
+        <item>Clothing, Shoes &amp; Accessories</item>
+        <item>Computers, Tablets &amp; Networking</item>
+        <item>Health &amp; Beauty</item>
+        <item>Music</item>
+        <item>Video Games &amp; Consoles</item>
+    </string-array>
+    <string name="input_error_toast">Please fix all fields with errors</string>
+    <string name="searching_products">Searching Products...</string>
+    <string name="results_showing">Showing &#160;</string>
+    <string name="results_results_for">&#160; results for &#160;</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="highlights">Highlights</string>
+    <string name="with">&#160; With &#160;</string>
+    <string name="sold_by">Sold By</string>
+    <string name="store_name">Store Name</string>
+    <string name="feedback_score">Feedback Score</string>
+    <string name="popularity">Popularity</string>
+    <string name="feedback_star">Feedback Star</string>
+    <string name="shipping_info">Shipping Info</string>
+    <string name="shipping_cost">Shipping Cost</string>
+    <string name="global_shipping">Global Shipping</string>
+    <string name="handling_time">Handling Time</string>
+    <string name="return_policy">Return Policy</string>
+    <string name="policy">Policy</string>
+    <string name="returns_within">Returns within</string>
+    <string name="refund_mode">Refund Mode</string>
+    <string name="shipped_by">Shipped By</string>
+
+    <string-array name="sortType_array">
+        <item>Default</item>
+        <item>Name</item>
+        <item>Price</item>
+        <item>Days</item>
+    </string-array>
+    <string-array name="ascendDescend_array">
+        <item>Ascending</item>
+        <item>Descending</item>
+    </string-array>
+
+    <string name="sharedPreference_key">com.example.productsearch.WISHLIST_key</string>
+
+
+</resources>

@@ -1,0 +1,66 @@
+<!-- detail button-->
+<div *ngIf="wishlist.length" class="container">
+  <div class="d-flex justify-content-end">
+    <button type="button" class="btn btn-light" *ngIf="showResultsTable" (click)="returnToDetail()" [disabled]="(selectedItem | json) == ({} | json)">Detail 
+      <i class="material-icons">keyboard_arrow_right</i> </button>
+  </div>
+</div>
+<br>
+
+<!-- RESULTS TABLE -->
+<div class="container" [hidden]="!showResultsTable">
+  <div *ngIf="wishlist.length" class="table-responsive text-nowrap">
+  <table class="table table-striped table-dark table-hover table-fixed">
+    <thead>
+      <tr>
+        <th scope="col" style="width: 5%">#</th>
+        <th scope="col" style="width: 10%">Image</th>
+        <th scope="col" style="width: 35%">Title</th>
+        <th scope="col" style="width: 10%">Price</th>
+        <th scope="col" style="width: 10%">Shipping</th>
+        <th scope="col" style="width: 15%">Seller</th>
+        <th scope="col" style="width: 15%">Wish List</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of wishlist; let i=index"
+      [class.selected]="item.id === selectedItem.id">
+        <td>{{ i+1 }}</td>
+        <td>
+          <a href={{item.image}} target="_blank"><img [src]="item.image" class="mr-2" style="height: 100px; width: 100px"></a></td>
+        <td><a matTooltip="{{item.title}}" href="#wishlist-details" (click)="selectItem(item)">{{ item.title.substring(0,35)}} ...</a></td>
+        <td>{{ item.price }}</td>
+        <td>{{ item.shipping }}</td>
+        <td>{{ item.seller }}</td>
+        <td><button type="button" class="btn btn-light" (click)="wishListUpdate(item)">
+            <span [hidden]="wishListSearch(item.id) != -1"><i class="material-icons">add_shopping_cart</i></span>
+            <span [hidden]="wishListSearch(item.id) == -1"><i class="material-icons golden">remove_shopping_cart</i></span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <td colspan="4"> <td>
+      <td><b>Total Shopping</b></td>
+      <td><b>${{totalShopping}}</b></td>
+    </tfoot>
+  </table>
+  </div>
+</div>
+
+<div *ngIf="!wishlist.length">
+  <app-no-results></app-no-results>
+</div>
+
+
+<!-- PRODUCT DETAILS -->
+<div *ngIf="(selectedItem | json) != ({} | json)" id="wishlist-details" [hidden]="showResultsTable">
+  <app-product-details 
+    [selectedItem]="selectedItem" 
+    [selectedDetails]="selectedDetails" 
+    [selectedImages]="selectedImages" 
+    [similarItems]="similarItems"
+    [resOrWL]="'w'"
+    (listClick)="returnToSearch()"
+  ></app-product-details>
+</div>

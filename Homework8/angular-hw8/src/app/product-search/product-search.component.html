@@ -1,0 +1,131 @@
+<br>
+<div class="container bg-dark text-white" id="formContainer">
+  <br><h2 class="text-center">Product Search</h2><br>
+  <form #searchForm="ngForm" (ngSubmit)="createSearchQuery()" class="needs-validation" novalidate>
+
+    <div class="form-group row">
+      <label for="keyword" class="col-md-2 col-form-label offset-md-2">Keyword<span class="red" class="red">*</span></label>
+      <div class="col-md-5">
+        <input type="text" class="form-control" id="keyword" placeholder="Enter Product Name (eg. iPhone 8)" required pattern="^(?!\s*$).+"
+          [(ngModel)]="keyword" name="keyword" #keywordRef="ngModel">
+        <div [hidden]="keywordRef.valid || keywordRef.untouched" class="invalid-alert">
+          Please enter a keyword.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="category" class="col-md-2 col-form-label offset-md-2">Category</label>
+      <div class="col-md-2">
+          <select class="custom-select" id="category" name="category" [(ngModel)]="category">
+              <option value="All" selected>All Categories</option>
+              <option value="Art">Art</option>
+              <option value="Baby">Baby</option>
+              <option value="Books">Books</option>
+              <option value="Clothing">Clothing, Shoes & Accessories</option>
+              <option value="Computers">Computers/Tablets & Networking</option>
+              <option value="Health">Health & Beauty</option>
+              <option value="Music">Music</option>
+              <option value="VideoGames">Video Games & Consoles</option>
+            </select>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <span class="col-md-2 col-form-label offset-md-2">Condition</span>
+      <div class="col-md-3">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="New" name="New" [(ngModel)]="cond_new">
+          <label class="form-check-label" for="New">New</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="Used" name="Used" [(ngModel)]="cond_used">
+            <label class="form-check-label" for="Used">Used</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="Unspecified" name="Unspecified" [(ngModel)]="cond_unspecified">
+            <label class="form-check-label" for="Unspecified">Unspecified</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <span class="col-md-2 col-form-label offset-md-2">Shipping Options</span>
+      <div class="col-md-3">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="LocalPickup" name="LocalPickup" [(ngModel)]="localPickup">
+          <label class="form-check-label" for="LocalPickup">Local Pickup</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="FreeShipping" name="FreeShipping" [(ngModel)]="freeShipping">
+            <label class="form-check-label" for="FreeShipping">Free Shipping</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label for="milesFrom" class="col-md-2 col-form-label offset-md-2">Distance(Miles)</label>
+      <div class="col-md-2">
+        <input type="text" class="form-control" id="milesFrom" name="miles" placeholder="10" [(ngModel)]="distance">
+      </div>  
+    </div>
+
+    <div class="form-group row">
+      <span class="col-md-2 col-form-label offset-md-2">From<span class="red" class="red">*</span></span>
+      <div class="col-md-3">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="fromHere" name="fromWhere" value="fromHere" [(ngModel)]="fromWhere" (click)="zipcodeDisable()">
+            <label class="form-check-label" for="fromHere">Current Location</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" id="fromZipcode" name="fromWhere" value="fromZipcode" [(ngModel)]="fromWhere" (click)="zipcodeDisable()">
+            <label class="form-check-label" for="fromZipcode">Other. Please specify zip code.</label>
+        </div>
+      </div>  
+      <div class="col-md-5 offset-md-4">
+          <input type="text" class="form-control" name="zipcode" [required]="!zipcodeDisabled" 
+            [disabled]="zipcodeDisabled"
+            [(ngModel)]="zipcode" #zipcodeRef="ngModel" [matAutocomplete]="auto"
+            pattern="[0-9]{5}" (input)="zipSearch(zipcodeRef.value)">
+
+          <mat-autocomplete #auto="matAutocomplete">
+            <mat-option *ngFor="let option of autoOptions$ | async" [value]="option">{{option}}</mat-option>
+          </mat-autocomplete>
+
+          <div [hidden]="(zipcodeRef.valid || zipcodeRef.untouched) || zipcodeDisabled" class="invalid-alert">
+              Please enter a zip code.
+          </div>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-md-6 offset-md-2">
+        <button type="submit" class="btn btn-light"
+          [disabled]="!searchForm.form.valid || !currentZip"><i class="material-icons">search</i> Search</button>
+        <button type="button" (click)="searchForm.reset(); resetValues(searchForm)" class="btn btn-light"><i class="material-icons">clear_all</i> Clear</button>
+      </div>
+    </div>
+    <br>
+
+  </form> 
+</div>
+<br>
+
+<!-- Buttons for Results and Wish List-->
+<div class="container" id="displayToggle">
+  <div class="row justify-content-center">
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link active" data-toggle="pill" href="#results" (click)="showResults()">Results</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="pill" href="#wishlist" (click)="showWishList()">Wish List</a>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<br>
+<app-results-table id="results" [hidden]="!resultsPill"></app-results-table>
+<app-wish-list id="wishlist" [wishlist]="wishlist" [totalShopping]="totalShopping" [hidden]="!wishListPill"></app-wish-list>

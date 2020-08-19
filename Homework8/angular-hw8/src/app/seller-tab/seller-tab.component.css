@@ -1,0 +1,37 @@
+progress-wrapper {
+    position: relative;
+    text-align: center;
+  }
+  
+  .centered {
+    position: absolute;
+    transform: translate(20%, -140%);
+  }
+  
+  .material-icons.white {
+    color: white;
+  }
+  
+  .material-icons.yellow {
+    color: yellow;
+  }
+  
+  .material-icons.blue {
+    color: blue;
+  }
+  
+  .material-icons.turquoise {
+    color: turquoise;
+  }
+  
+  .material-icons.purple {
+    color: mediumpurple;
+  }
+  
+  .material-icons.red {
+    color: red;
+  }
+  
+  .material-icons.green {
+    color: green;
+  }

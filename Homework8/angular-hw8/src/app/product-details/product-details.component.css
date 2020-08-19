@@ -1,0 +1,31 @@
+.nav-tabs > li > a.active {
+    background-color: black;
+    color: white;
+  
+  }
+
+.nav-tabs > li > a {
+  color: black;
+  
+}
+  
+@media (max-width: 500px) { 
+  .nav-tabs > li > a {
+    padding: 5px;
+  }
+}
+
+.material-icons {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.material-icons.golden { 
+  color: darkgoldenrod; 
+}
+
+h5 {
+  text-align: center;
+}

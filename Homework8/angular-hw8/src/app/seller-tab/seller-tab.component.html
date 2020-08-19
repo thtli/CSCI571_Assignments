@@ -1,0 +1,56 @@
+<div *ngIf="sellerInfo">
+<table class="table table-striped table-dark">
+  <thead style="text-align: center"><td *ngIf="sellerInfo.UserID" colspan="2"><b>{{sellerInfo.UserID}}</b></td>
+  </thead>
+  <tbody>
+    <tr *ngIf="sellerInfo.FeedbackScore">
+        <th scope="row">Feedback Score</th>
+        <td>{{sellerInfo.FeedbackScore}}</td>
+      </tr>
+    <tr *ngIf="sellerInfo.PositiveFeedbackPercent">
+      <th scope="row">Popularity</th>
+      <td>
+      <div class="progress-wrapper">
+        <div  style="width:100%;">
+        <round-progress
+          [current]="sellerInfo.PositiveFeedbackPercent"
+          [max]="max"
+          [color]="'#008000'"
+          [background]="'#eaeaea'"
+          [radius]="20"
+          [stroke]="2"></round-progress></div>
+        <div class="centered">{{sellerInfo.PositiveFeedbackPercent}}</div>
+      </div>
+      </td>
+    </tr>
+    <tr *ngIf="sellerInfo.FeedbackRatingStar">
+      <th scope="row">Feedback Rating Star</th>
+      <td [ngSwitch]="sellerInfo.FeedbackRatingStar">
+        <span *ngSwitchCase="'None'"><i class="material-icons white">star_border</i></span>
+        <span *ngSwitchCase="'Yellow'"><i class="material-icons yellow">star_border</i></span>
+        <span *ngSwitchCase="'Blue'"><i class="material-icons blue">star_border</i></span>
+        <span *ngSwitchCase="'Turquoise'"><i class="material-icons turquoise">star_border</i></span>
+        <span *ngSwitchCase="'Purple'"><i class="material-icons purple">star_border</i></span>
+        <span *ngSwitchCase="'Red'"><i class="material-icons red">star_border</i></span>
+        <span *ngSwitchCase="'Green'"><i class="material-icons green">star_border</i></span>
+        <span *ngSwitchDefault><i class="material-icons yellow">stars</i></span>
+      </td>
+    </tr>
+    <tr *ngIf="sellerInfo.TopRatedSeller">
+      <th scope="row">Top Rated</th>
+      <td>
+        <i *ngIf="sellerInfo.TopRatedSeller == true" class="material-icons green">check</i>
+        <i *ngIf="sellerInfo.TopRatedSeller == false" class="material-icons red">close</i>
+      </td>
+    </tr>
+    <tr *ngIf="storeInfo">
+      <th scope="row">Store Name</th>
+      <td>{{storeInfo.StoreName}}</td>
+    </tr>
+    <tr *ngIf="storeInfo">
+      <th scope="row">Buy Product At</th>
+      <td><a href={{storeInfo.StoreURL}} target="_blank">Store</a></td>
+    </tr>
+  </tbody>
+</table>
+</div>
